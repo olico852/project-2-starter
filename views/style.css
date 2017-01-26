@@ -1,0 +1,39 @@
+.firstBG {
+  background: #75B1A9;
+}
+
+.middleBG {
+  background: #D9B44A;
+}
+
+.lastBG {
+  background: #4F6457;
+}
+
+.text {
+  color: white;
+}
+
+.font {
+  font-size: 20px;
+}
+
+.namefont {
+  font-size: 15px;
+}
+
+.postfont {
+  font-size: 30px;
+}
+
+.timefont {
+  font-size: 12px;
+}
+
+.pads {
+  padding: 40px;
+}
+
+.para {
+  white-space: pre-wrap;
+}

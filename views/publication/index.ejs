@@ -1,0 +1,74 @@
+<header class="navbar middleBG">
+  <div class="container">
+    <nav role="navigation">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text font" href="/homepage/new">
+                 New Journal
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text font" href="/homepage/publication/others">
+                Other Journals
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text font" href="/auth/logout">
+                 Logout
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text font" href="#">
+                Logged in as <%= currentUser.name %>
+              </a>
+            </li>
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+ <h1 class="page-header text">My Journals</h1>
+  <div class="list-group">
+
+     <% journals.forEach(function (item) { %>
+       <div class="lastBG pads">
+
+       <span class="text">
+         <h3>Title</h3><br>
+         <p class="para"><%= item.name %></p>
+       </span>
+
+       <span class="text">
+         <h3>Description</h3><br>
+         <p class="para"><%= item.description %></p>
+       </span>
+
+       <span class="text">
+         <% if (item.url === "") { %>
+         <% } else { %>
+           <h3>URL</h3><br>
+           <%= item.url %>
+         <% } %>
+       </span>
+       <br>
+
+      <a class="pull-right" href=<%= "/homepage/" + item._id %>>
+        <button type="submit" class="btn btn-default middleBG">
+          View
+        </button>
+      </a>
+      </div>
+      <br>
+      <br>
+
+     <% }) %>
+</div>
+
+</div>

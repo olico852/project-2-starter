@@ -1,0 +1,26 @@
+<div class="container">
+
+    <h1 class="page-header text">Updating...</h1>
+
+    <form method="POST" action="?_method=PUT">
+      <div class="form-group">
+        <label for="name">Title</label>
+        <input type="text" name="name" class="form-control" value="<%= eachJournal.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea type="text" name="description" class="form-control" rows="8" cols="80"><%= eachJournal.description %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" name="url" class="form-control" value="<%= eachJournal.url %>">
+      </div>
+
+      <button type="submit" class="btn btn-default middleBG">
+         Update
+      </button>
+
+    </form>
+</div>

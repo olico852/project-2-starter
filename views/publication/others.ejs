@@ -1,0 +1,42 @@
+<div class="container">
+ <h1 class="page-header text">Other Journals</h1>
+
+<div class="list-group">
+ <% journals.forEach(function (item) { %>
+   <div class="lastBG pads">
+
+     <span class="text">
+       <h3>Title</h3><br>
+       <%= item.name %>
+     </span>
+
+     <span class="text">
+       <h3>Description</h3><br>
+       <%= item.description %>
+     </span>
+
+     <span class="text">
+       <% if (item.url === "") { %>
+       <% } else { %>
+         <h3>URL</h3><br>
+         <%= item.url %>
+       <% } %>
+     </span>
+
+     <span class="text">
+       <h3>Posted by</h3><br>
+       <%= item.user_id.name %>
+     </span>
+     <br>
+     <a class="pull-right" href=<%= "/homepage/" + item._id %>>
+       <button type="button" class="btn btn-default middleBG">
+         Comment
+       </button>
+     </a>
+ </div>
+ <br><br><br>
+
+ <% }) %>
+
+</div>
+</div>

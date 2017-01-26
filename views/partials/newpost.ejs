@@ -1,0 +1,19 @@
+<div class='container'>
+  <h1 class="page-header text">New Comments</h3>
+  <div class='list-group'>
+      <% posts.forEach(function (item) { %>
+        <p class="namefont"><%= item.user_id.name %> made a post</p>
+
+        <p class="postfont"><%= item.content %></p>
+
+        <p class="timefont">posted on <%= item.publishedAt %></p>
+
+      <% }) %>
+
+    <a class="pull-right" href=../>
+      <button type="submit" class="btn btn-default middleBG">
+        Go Back
+      </button>
+    </a>
+  </div>
+</div>

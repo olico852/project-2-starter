@@ -1,0 +1,51 @@
+<div class="container">
+ <h1 class="page-header text">Single Journal</h1>
+
+<div class="list-group">
+  <div class="list-group">
+  <% if (currentUser.name === eachJournal.user_id.name) { %>
+  <a class="pull-right" href=<%= "/homepage/" + eachJournal._id + "/edit" %>>
+    <button type="submit" class="btn btn-default middleBG">
+      Update
+    </button>
+  </a>
+
+  <form class="pull-right" action=<%="/homepage/" +  eachJournal._id  + "?_method=DELETE"%> method="POST">
+    <button type="submit" class="btn btn-default middleBG">
+      Delete
+    </button>
+  </form>
+
+  <% } %>
+
+
+  </div>
+
+  <p>
+    <h3>Title</h3><br>
+    <p class="para"><%= eachJournal.name %></p>
+  </p>
+
+  <p>
+    <h3>Description</h3><br>
+    <p class="para"><%= eachJournal.description %></p>
+  </p>
+
+  <p>
+    <% if (eachJournal.url === "") { %>
+    <% } else { %>
+      <h3>URL</h3><br>
+      <%= eachJournal.url %>
+    <% } %>
+  </p>
+
+
+    <a class="pull-left" href="/homepage">
+      <button type="submit" class="btn btn-default middleBG">
+        Go Back
+      </button>
+    </a>
+
+</div>
+
+</div>

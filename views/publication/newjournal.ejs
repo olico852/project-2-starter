@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="page-header text">New Journal</h1>
+
+    <form method="POST" action="/homepage/new">
+
+      <div class="form-group">
+        <label for="name">Title:</label><br>
+        <input type="text" name="name" class="form-control">
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="description">Description:</label><br>
+        <textarea type="text" name="description" class='form-control' rows='8' cols='80'></textarea>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="url">Link to:</label><br>
+        <input type="url" name="url" class="form-control">
+      </div>
+      <br>
+
+      <button type="submit" class="btn btn-default middleBG pull-right">
+        Create
+      </button>
+
+    </form>
+    <br>
+
+</div>
