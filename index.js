@@ -15,7 +15,7 @@ const morgan = require('morgan')
 const router = express.Router() // get an instance of the express Router
 const app = express()
 
-mongoose.connect('mongodb://localhost/social-journalism')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-journalism')
 
 app.set('view engine', 'ejs');
 
