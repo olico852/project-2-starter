@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 
 //email validation
 var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
