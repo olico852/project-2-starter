@@ -2,27 +2,33 @@ let Publication = require('../models/publication')
 let User = require('../models/user')
 
 let publicationController = {
-  list: (req, res) => {
-    Publication.find({user_id: req.user._id}, (err, journals) => {
+  list: function (req, res) {
+    Publication.find({user_id: req.user._id}, function (err, journals) {
       if (err) console.log(err);
       res.render('publication/index', { journals: journals })
     })
   },
 
-  listAll: (req, res) => {
-    Publication.find({user_id: {$ne: req.user.id}}).populate("user_id").exec((err, journals) => {
+  listAll: function (req, res) {
+    Publication.find({user_id: {$ne: req.user.id}})
+    .populate("user_id")
+    .exec(
+      function (err, journals) {
     if (err) console.log(err);
     res.render('publication/others', { journals: journals })
     })
   },
 
-  new: (req, res) => {
+  new: function (req, res) {
     res.render('publication/newjournal')
   },
 
-  listOne: (req, res) => {
+  listOne: function (req, res) {
     console.log('SINGLEJOURNAL');
-    Publication.findById(req.params.id).populate("user_id").exec((err, eachJournal) => {
+    Publication.findById(req.params.id)
+    .populate("user_id")
+    .exec(
+      function (err, eachJournal) {
       console.log(eachJournal);
       console.log('hello');
       if (err) console.log(err);
@@ -39,7 +45,7 @@ let publicationController = {
   //   })
   // },
 
-  create: (req, res) => {
+  create: function (req, res) {
     let newJournal = new Publication({
       name: req.body.name,
       description: req.body.description,
@@ -47,19 +53,19 @@ let publicationController = {
       user_id: req.user._id
     })
     newJournal.save(function (err, journal) {
-      if (err) console.log(err);
+      if (err) return res.status(404);
       res.redirect('/homepage')
     })
   },
 
-  edit: (req, res) => {
-    Publication.findById(req.params.id, (err, eachJournal) => {
+  edit: function (req, res) {
+    Publication.findById(req.params.id, function (err, eachJournal) {
       if (err) console.log(err);
       res.render('publication/edit', { eachJournal: eachJournal })
     })
   },
 
-  update: (req, res) => {
+  update: function (req, res) {
     console.log('entered');
     console.log(req.params.id);
     console.log(req.body);
@@ -71,7 +77,7 @@ let publicationController = {
       url: req.body.url,
       user_id: req.user.id
     },
-     (err, eachJournal) => {
+     function (err, eachJournal) {
       if (err) console.log(err);
       console.log('err:' + err);
       console.log('eachJournal:' + eachJournal);
@@ -79,8 +85,8 @@ let publicationController = {
     })
   },
 
-  delete: (req, res) => {
-    Publication.findByIdAndRemove(req.params.id, (err, eachJournal) => {
+  delete: function (req, res) {
+    Publication.findByIdAndRemove(req.params.id, function (err, eachJournal) {
       if (err) console.log(err);
       res.redirect('/homepage')
     })

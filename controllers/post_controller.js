@@ -2,13 +2,13 @@ let Post = require('../models/post')
 let User = require('../models/user')
 
 let postController = {
-  list: (req, res) => {
+  list: function (req, res) {
     var populateQuery = [{}]
     Post.find({publication_id: req.params.id})
     .populate('publication_id')
     .populate('user_id')
     .exec(
-     (err, posts) => {
+     function (err, posts) {
        console.log(posts);
        console.log('yoyoyo');
        console.log('Posts : '+ JSON.stringify(posts));
@@ -18,7 +18,7 @@ let postController = {
       //  if (!posts[0].publication_id.user_id.equals(req.user.id)) {
       //    return
       //  }
-       if (err) throw err
+       if (err) console.log(err);
        console.log('postshwllo' + posts);
        res.render('partials/newpost', { posts: posts })
      })
@@ -28,16 +28,16 @@ let postController = {
   //   res.render('partials/newpost')
   // },
 
-  listOne: (req, res) => {
+  listOne: function (req, res) {
     console.log('SINGLEPOST')
-    Post.findById(req.params.id, (err, eachPost) => {
+    Post.findById(req.params.id, function (err, eachPost) {
       console.log('eachPost: ' + eachPost)
-      if (err) throw err
+      if (err) console.log(err);
       res.render('partials/newpost', { eachPost: eachPost })
     })
   },
 
-  create: (req, res) => {
+  create: function (req, res) {
     let newPost = new Post({
       content: req.body.content,
       publishedAt: req.body.publishedAt,
@@ -45,7 +45,7 @@ let postController = {
       publication_id: req.params.id
     })
     newPost.save(function (err, post) {
-      if (err) throw err
+      if (err) console.log(err);
       console.log('save');
       res.redirect('/homepage/'+req.params.id)
     })

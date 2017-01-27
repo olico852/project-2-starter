@@ -15,6 +15,16 @@ const publicationSchema = new mongoose.Schema({
   user_id: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 
+// publicationSchema.pre('save', function(next) {
+//   //DO NOT USE FAT ARROW AS IT IS UNBINDABLE WHICH MAKES 'THIS' UNDEFINED
+//   console.log(req.body.name);
+//   if (req.body.name.length < 5){
+//     //do some code...
+//     pad with sstring
+//
+//   }
+// });
+
 const Publication = mongoose.model('Publication', publicationSchema)
 
 module.exports = Publication
