@@ -12,6 +12,10 @@ const publicationSchema = new mongoose.Schema({
     required: true,
   },
   url: { type: String },
+  picture: {
+    data: Buffer,
+    contentType: String
+  },
   user_id: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 

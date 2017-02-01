@@ -40,6 +40,11 @@
      <% journals.forEach(function (item) { %>
        <div class="lastBG pads">
 
+         <span class="text">
+           <h3>Image</h3><br>
+           <img class="para" src="<%= item.picture %>">
+         </span>
+
        <span class="text">
          <h3>Title</h3><br>
          <p class="para"><%= item.name %></p>

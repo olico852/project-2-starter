@@ -12,6 +12,10 @@ const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const morgan = require('morgan')
+const multer = require('multer')
+const upload = multer({ dest: './uploads/' })
+const cloudinary = require('cloudinary')
+const fs = require('fs')
 const router = express.Router() // get an instance of the express Router
 const app = express()
 
@@ -65,6 +69,12 @@ app.use('/auth', require('./controllers/auth'))
 app.use(isLoggedIn)
 
 app.use('/homepage', publication)
+
+app.post('/homepage', upload.single('myFile'), function(req, res) {
+  cloudinary.uploader.upload(req.file.path, function(result) {
+    res.send(result);
+  })
+})
 
 
 const server = app.listen(process.env.PORT || 3000)  // set our port

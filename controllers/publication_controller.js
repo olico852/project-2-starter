@@ -1,7 +1,7 @@
-let Publication = require('../models/publication')
-let User = require('../models/user')
+const Publication = require('../models/publication')
+const User = require('../models/user')
 
-let publicationController = {
+const publicationController = {
   list: function (req, res) {
     Publication.find({user_id: req.user._id}, function (err, journals) {
       if (err) console.log(err);
@@ -50,6 +50,7 @@ let publicationController = {
       name: req.body.name,
       description: req.body.description,
       url: req.body.url,
+      picture: req.body.picture,
       user_id: req.user._id
     })
     newJournal.save(function (err, journal) {
@@ -75,6 +76,7 @@ let publicationController = {
       name: req.body.name,
       description: req.body.description,
       url: req.body.url,
+      picture: req.body.picture,
       user_id: req.user.id
     },
      function (err, eachJournal) {

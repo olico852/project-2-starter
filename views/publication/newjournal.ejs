@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="page-header text">New Journal</h1>
 
-    <form method="POST" action="/homepage/new">
+    <form method="POST" action="/homepage/new" enctype="multipart/form-data">
 
       <div class="form-group">
         <label for="name">Title:</label><br>
@@ -21,7 +21,13 @@
       </div>
       <br>
 
-      <button type="submit" class="btn btn-default middleBG pull-right">
+      <div class="form-group">
+        <label for="picture">Any Image?</label><br>
+        <input type="file" name="image" class="form-control">
+      </div>
+      <br>
+
+      <button type="submit" class="btn btn-default middleBG pull-right" value="Upload image">
         Create
       </button>
 
