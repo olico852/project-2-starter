@@ -3,13 +3,13 @@ let User = require('../models/user')
 
 let postController = {
   list: function (req, res) {
-    var populateQuery = [{}]
+    var populateQuery = [{}] // redundant code.
     Post.find({publication_id: req.params.id})
     .populate('publication_id')
     .populate('user_id')
     .exec(
      function (err, posts) {
-       console.log(posts);
+       console.log(posts) // would help keep the codes more organised if console logs can be commented out. 
        console.log('yoyoyo');
        console.log('Posts : '+ JSON.stringify(posts));
        console.log('Posts : '+ posts[0].content);
